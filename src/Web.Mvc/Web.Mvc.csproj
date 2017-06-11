@@ -255,6 +255,7 @@
     <Content Include="Views\Shared\Default.cshtml" />
     <Content Include="Content\angular\angular-route\angular-route.min.js.map" />
     <Content Include="Views\Home\ExternalMovies.cshtml" />
+    <None Include="Properties\PublishProfiles\crimsonspacemedia - Web Deploy.pubxml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

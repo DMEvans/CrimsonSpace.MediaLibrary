@@ -1,6 +1,6 @@
 ﻿<div data-ng-controller="searchController" data-ng-cloak>
     <h2 class="text-center">Import Movies</h2>
-    <form data-ng-submit="searchMovies()">
+    <form data-ng-submit="newMovieSearch()">
         <div class="input-group">
             <input type="text" name="query" class="form-control input-lg" placeholder="Search movies..." data-ng-model="query" />
             <div class="input-group-btn">
@@ -10,6 +10,42 @@
             </div>
         </div>
     </form>
+
+    <div data-ng-show="totalResults" style="text-align: right;">
+        {{ totalResults }} results found
+    </div>
+
+    <div data-ng-show="pages.length > 0">
+        <div class="text-center">
+            <ul class="pagination">
+                <li data-ng-show="showFirstPageButton">
+                    <a href="#" data-ng-click="goToPage(1)">
+                        First
+                    </a>
+                </li>
+                <li data-ng-show="showPreviousSetPageButton">
+                    <a href="#" data-ng-click="goToPage(previousPageSetIndex)">
+                        <<
+                    </a>
+                </li>
+                <li data-ng-repeat="page in pages" data-ng-class="pageIndex == page ? 'active' : ''">
+                    <a href="#" data-ng-click="goToPage(page)">
+                        {{ page }}
+                    </a>
+                </li>
+                <li data-ng-show="showNextSetPageButton">
+                    <a href="#" data-ng-click="goToPage(nextPageSetIndex)">
+                        >>
+                    </a>
+                </li>
+                <li data-ng-show="showLastPageButton">
+                    <a href="#" data-ng-click="goToPage(lastPage)">
+                        Last
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
 
     <div class="loading-panel text-center" data-ng-show="isLoading">
         <div class="loading-animation center-block"></div>
@@ -21,9 +57,6 @@
     </div>
 
     <div data-ng-show="searchResults.HasResults">
-        <div style="text-align: right;">
-            {{ searchResults.TotalResults }} results found
-        </div>
         <div data-ng-repeat="item in searchResults.Results" data-ng-include="resultTemplate"></div>
     </div>
 </div>
