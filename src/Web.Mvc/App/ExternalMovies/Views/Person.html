@@ -1,0 +1,79 @@
+﻿<div data-ng-controller="searchController" data-ng-cloak>
+    <div class="loading-panel text-center" data-ng-show="isLoading">
+        <div class="loading-animation center-block"></div>
+        Loading...
+    </div>
+
+    <div class="error-panel text-center" data-ng-show="error">
+        {{ error }}
+    </div>
+
+    <div data-ng-hide="isLoading">
+        <div class="row movie-detail-header">
+            <div class="col-sm-3 text-center">
+                <a data-ng-href="{{ person.ProfileImageUrlOriginal }}" target="_blank">
+                    <img class="img-responsive center-block" data-ng-src="{{ person.ProfileImageUrl }}" alt="{{ person.Name }}" />
+                </a>
+            </div>
+            <div class="col-sm-9">
+                <h1>{{ person.Name }}</h1>
+                <div class="row" data-ng-show="person.HasBirthday">
+                    <div class="col-md-6">
+                        Born: {{ person.Birthday }}
+                    </div>
+                    <div class="col-md-6" data-ng-show="person.IsDeceased">
+                        Died: {{ person.Deathday }}
+                    </div>
+                </div>
+                <p>{{ person.Biography }}</p>
+            </div>
+        </div>
+
+        <div class="gallery row">
+            <div class="col-md-2 col-xs-6 text-center" data-ng-repeat="image in person.Images" style="height: {{ image.ImageHeight }}px;">
+                <a data-ng-href="{{ image.ImageUrlOriginal }}" target="_blank">
+                    <img class="img-responsive center-block" data-ng-src="{{ image.ImageUrl }}" alt="Profile Image" />
+                </a>
+            </div>
+        </div>
+
+        <table class="table table-striped table-middle-text">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Type</th>
+                    <th>Year</th>
+                    <th>Title</th>
+                    <th>Character</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr data-ng-repeat="credit in person.CastCredits | orderBy: creditYear:true">
+                    <td>
+                        <a href="#" data-ng-show="credit.IsMovieCredit && credit.HasPosterImage" data-ng-click="showMovie(credit.Id)">
+                            <img data-ng-src="{{ credit.PosterImageUrl }}" alt="Poster" />
+                        </a>
+                        <a href="#" data-ng-show="credit.IsTvCredit && credit.HasPosterImage" data-ng-click="showTvShow(credit.Id)">
+                            <img data-ng-src="{{ credit.PosterImageUrl }}" alt="Poster" />
+                        </a>
+                    </td>
+                    <td>
+                        <i data-ng-show="credit.IsMovieCredit" class="fa fa-film fa-2x" />
+                        <i data-ng-show="credit.IsTvCredit" class="fa fa-television fa-2x" />
+                    </td>
+                    <td>
+                        <span data-ng-show="credit.IsMovieCredit">{{ credit.ReleaseYear }}</span>
+                        <span data-ng-show="credit.IsTvCredit">{{ credit.FirstAirYear }}</span>
+                    </td>
+                    <td>
+                        <a href="#" data-ng-show="credit.IsMovieCredit" data-ng-click="showMovie(credit.Id)">{{ credit.Title }}</a>
+                        <a href="#" data-ng-show="credit.IsTvCredit" data-ng-click="showTvShow(credit.Id)">{{ credit.Name }}</a>
+                    </td>
+                    <td>
+                        {{ credit.Character }}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,17 @@
+﻿<div class="row movie-detail-header" style="{{ details.BackdropImageCss }}">
+    <div class="overlay">
+    </div>
+    <div class="col-sm-3 text-center">
+        <a data-ng-href="{{ details.PosterImageUrlOriginal }}" target="_blank">
+            <img class="img-responsive center-block" data-ng-src="{{ details.PosterImageUrl }}" alt="{{ details.Title }}" />
+        </a>
+    </div>
+    <div class="col-sm-9">
+        <h1>{{ details.Title }}</h1>
+        <h4 class="tagline"><em>{{ details.Tagline }}</em></h4>
+        <div class="genre-labels">
+            <span class="label label-primary" data-ng-repeat="genre in details.Genres" data-id="{{ genre.Id }}">{{ genre.Name }}</span>
+        </div>
+        <p>{{ details.Overview }}</p>
+    </div>
+</div>

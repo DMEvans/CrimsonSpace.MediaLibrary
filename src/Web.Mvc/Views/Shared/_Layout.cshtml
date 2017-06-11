@@ -1,0 +1,67 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Crimson Space Media Library</title>
+    <link type="text/css" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    @Styles.Render("~/bundles/css")
+</head>
+<body data-ng-app="main">
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar">
+                    </span>
+                </button>
+                @Html.ActionLink("Media Library", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            Movies
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/external-movies">Search</a></li>
+                            <li><a href="/external-movies">Import from TMDB</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            TV
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("Search", "MovieImport", "Home")</li>
+                            <li>@Html.ActionLink("Import from TMDb", "MovieImport", "Home")</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer class="text-center col-xs-12">
+            <p>&copy; @DateTime.Now.Year - Crimson Space Media</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/js-libraries")
+    <script type="text/javascript">
+        window.MyApp = {};
+        MyApp.rootPath = '@Url.Content("~")';
+    </script>
+    @Scripts.Render("~/bundles/local-js")
+    @RenderSection("scripts", required: false)
+    <script type="text/javascript">
+        @RenderSection("embeddedScripts", required: false)
+    </script>
+</body>
+</html>

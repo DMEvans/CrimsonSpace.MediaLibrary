@@ -286,3 +286,10 @@ __pycache__/
 *.btm.cs
 *.odx.cs
 *.xsd.cs
+/src/Web.Mvc/Web.Release.config
+/src/Web.Mvc/Web.Debug.config
+/src/Web.Mvc/Web.config
+/src/Web.Mvc/Web.Release.config
+/src/Web.Mvc/Web.Debug.config
+/src/Web.Mvc/Web.config
+/src/Web.Mvc/Web.config

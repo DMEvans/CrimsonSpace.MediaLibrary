@@ -1,0 +1,15 @@
+﻿@{
+    ViewBag.Title = "Import Movies";
+}
+@section scripts {
+    @Scripts.Render("~/bundles/external-movies")
+}
+@section embeddedScripts {
+    angular.bootstrap(document.getElementById("externalMovies"), ['externalMovies']);
+}
+
+<div ng-non-bindable>
+    <div id="externalMovies" data-ng-controller="rootController">
+        <div ng-view></div>
+    </div>
+</div>

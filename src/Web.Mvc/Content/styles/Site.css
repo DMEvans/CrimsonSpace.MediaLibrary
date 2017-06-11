@@ -1,0 +1,114 @@
+﻿/* Main Primary color */
+/* Main Secondary color (1) */
+/* Main Secondary color (2) */
+/* Main Complement color */
+body {
+  padding-top: 50px;
+  padding-bottom: 20px;
+}
+img {
+  padding: 3px;
+}
+.movie-search-result {
+  padding: 10px;
+  background-color: #E35748;
+  margin: 5px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+}
+.movie-search-result .overview {
+  max-height: 203px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.movie-detail-header {
+  padding: 10px;
+  margin: 5px;
+  background-color: #6B0A00;
+  border: 3px solid #67000C;
+  position: relative;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+}
+.movie-detail-header .overlay {
+  background-color: #6B0A00;
+  filter: alpha(opacity=70);
+  opacity: 0.7;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+.movie-detail-body {
+  padding: 10px;
+  margin: 5px;
+}
+.top-billed-cast {
+  padding: 5px;
+  margin-bottom: 5px;
+  display: block;
+  background-color: #CB1B30;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+}
+.top-billed-cast:hover {
+  text-decoration: none;
+  background-color: #D94557;
+}
+.table thead {
+  background-color: #CB1B30;
+}
+.collection {
+  display: block;
+  background-color: #CB1B30;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+}
+.collection:hover {
+  text-decoration: none;
+  background-color: #D94557;
+}
+.tagline {
+  color: #AAAAAA;
+}
+.genre-labels {
+  font-size: large;
+}
+.genre-labels span {
+  margin-right: 5px;
+}
+.import-label {
+  font-weight: bold;
+}
+.table-middle-text td {
+  vertical-align: middle !important;
+}
+.error-panel {
+  margin: 20px;
+  font-size: larger;
+}
+.loading-panel {
+  margin: 20px;
+  font-size: larger;
+}
+.loading-animation {
+  border: 16px solid #E35748;
+  border-top: 16px solid #FFFFFF;
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  animation: spin 1.5s linear infinite;
+}
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

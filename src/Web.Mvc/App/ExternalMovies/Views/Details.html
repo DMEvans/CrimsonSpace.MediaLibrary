@@ -1,0 +1,141 @@
+﻿<div data-ng-controller="detailsController" data-ng-cloak>
+    <div class="loading-panel text-center" data-ng-show="isLoading">
+        <div class="loading-animation center-block"></div>
+        Loading...
+    </div>
+
+    <div class="error-panel text-center" data-ng-show="error">
+        {{ error }}
+    </div>
+
+    <div data-ng-hide="isLoading">
+        <div data-ng-include="headerTemplate"></div>
+        <div class="movie-detail-body">
+            <div class="row">
+                <div class="{{ details.DetailsColumnClass }}">
+                    <div class="col-md-6">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th colspan="2" class="text-center">Crew</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Release Date</td>
+                                    <td>{{ details.ReleaseDate }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Run Time</td>
+                                    <td>{{ details.Runtime }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th class="text-center">Production Companies</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr data-ng-repeat="company in details.ProductionCompanies">
+                                    <td>
+                                        {{ company.Name }}
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th colspan="2" class="text-center">Financial Performance</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Budget</td>
+                                    <td>{{ details.Budget }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Revenue</td>
+                                    <td>{{ details.Revenue }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Profit</td>
+                                    <td>{{ details.Profit }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-md-6">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th colspan="2" class="text-center">Crew</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr data-ng-repeat="director in details.Directors">
+                                    <td>
+                                        <a href="#" data-ng-click="showPerson(director.Id)">{{ director.Name }}</a>
+                                    </td>
+                                    <td>
+                                        {{ director.Job }}
+                                    </td>
+                                </tr>
+                                <tr data-ng-repeat="writer in details.Writers">
+                                    <td>
+                                        <a href="#" data-ng-click="showPerson(writer.Id)">{{ writer.Name }}</a>
+                                    </td>
+                                    <td>
+                                        {{ writer.Job }}
+                                    </td>
+                                </tr>
+                                <tr data-ng-repeat="producer in details.Producers">
+                                    <td>
+                                        <a href="#" data-ng-click="showPerson(producer.Id)">{{ producer.Name }}</a>
+                                    </td>
+                                    <td>
+                                        {{ producer.Job }}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2" class="text-center">
+                                        <a href="#" data-ng-click="showCrewCredits()">See full crew</a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <a href="#" data-ng-show="details.BelongsToCollection" data-ng-click="showCollection(details.Collection.Id)" class="collection text-center {{ details.CollectionColumnClass }}">
+                    <div class="panel-body">
+                        <img class="img-responsive center-block" data-ng-src="{{ details.Collection.PosterImageUrl }}" alt="Collection" />
+                        <div>
+                            Part of <br />
+                            <b>{{ details.Collection.Name }}</b>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div>
+                <h3 class="text-center">Top Billed Cast</h3>
+                <div class="row">
+                    <div class="col-md-2 col-md-4 col-sm-6 col-xs-12 text-center" data-ng-repeat="castMember in details.TopBilledCast">
+                        <a class="top-billed-cast" href="#" data-ng-click="showPerson(castMember.Id)">
+                            <div>
+                                <img class="img-responsive center-block" data-ng-src="{{ castMember.ProfileImageUrl }}" alt="Profile" />
+                            </div>
+                            <div>
+                                <div style="font-weight: 600;">{{ castMember.Name }}</div>
+                                <div>{{ castMember.Character }}</div>
+                            </div>
+                        </a>
+                    </div>
+                    <a href="#" data-ng-click="showCastCredits()" class="btn btn-primary">See full cast</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

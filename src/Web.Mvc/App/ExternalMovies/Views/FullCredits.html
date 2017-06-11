@@ -1,0 +1,84 @@
+﻿<div data-ng-controller="fullCreditsController" data-ng-cloak>
+    <div class="loading-panel text-center" data-ng-show="isLoading">
+        <div class="loading-animation center-block"></div>
+        Loading...
+    </div>
+
+    <div class="error-panel text-center" data-ng-show="error">
+        {{ error }}
+    </div>
+
+    <div data-ng-hide="isLoading">
+        <div data-ng-include="headerTemplate"></div>
+        <ul class="nav nav-tabs">
+            <li class="cast-tab">
+                <a href="#" data-ng-click="showCastList()">Cast</a>
+            </li>
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                    Crew
+                    <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li>
+                        <a data-ng-href="#" data-ng-click="setDepartmentFilter('All')">All</a>
+                    </li>
+                    <li data-ng-repeat="department in details.Departments" class="crew-tab" data-group="{{ department }}">
+                        <a data-ng-href="#" data-ng-click="setDepartmentFilter(department)">{{ department }}</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+        <div id="cast" data-ng-show="castVisible">
+            <table class="table table-striped table-middle-text">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Name</th>
+                        <th>Character</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr data-ng-repeat="castMember in details.Cast">
+                        <td>
+                            <a href="#" data-ng-click="showPerson(castMember.Id)">
+                                <img class="img-responsive center-block" data-ng-src="{{ castMember.ProfileImageUrl }}" alt="Profile" />
+                            </a>
+                        </td>
+                        <td>
+                            <a href="#" data-ng-click="showPerson(castMember.Id)">{{ castMember.Name }}</a>
+                        </td>
+                        <td>{{ castMember.Character }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div id="crew" data-ng-show="crewVisible">
+            <div class="crew-group" data-ng-repeat="group in details.Crew | filter: filterDepartments" data-group="{{ group.Department }}">
+                <h4>{{group.Department }}</h4>
+                <table class="table table-striped table-middle-text">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>Name</th>
+                            <th>Job</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr data-ng-repeat="crewMember in group.Members">
+                            <td>
+                                <a href="#" data-ng-click="showPerson(crewMember.Id)">
+                                    <img class="img-responsive center-block" data-ng-src="{{ crewMember.ProfileImageUrl }}" alt="Profile" />
+                                </a>
+                            </td>
+                            <td>
+                                <a href="#" data-ng-click="showPerson(crewMember.Id)">{{ crewMember.Name }}</a>
+                            </td>
+                            <td>{{ crewMember.Job }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

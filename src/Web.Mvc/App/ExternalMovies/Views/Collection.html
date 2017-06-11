@@ -1,0 +1,33 @@
+﻿<div data-ng-controller="collectionController" data-ng-cloak>
+    <div class="loading-panel text-center" data-ng-show="isLoading">
+        <div class="loading-animation center-block"></div>
+        Loading...
+    </div>
+
+    <div class="error-panel text-center" data-ng-show="error">
+        {{ error }}
+    </div>
+
+    <div data-ng-hide="isLoading">
+        <div class="row movie-detail-header" style="{{ collection.BackdropImageCss }}">
+            <div class="overlay">
+            </div>
+            <div class="col-sm-3 text-center">
+                <a data-ng-href="{{ collection.PosterImageUrlOriginal }}" target="_blank">
+                    <img class="img-responsive center-block" data-ng-src="{{ collection.PosterImageUrl }}" alt="{{ collection.Name }}" />
+                </a>
+            </div>
+            <div class="col-sm-9">
+                <h1>{{ collection.Name }}</h1>
+                <div class="genre-labels">
+                    <span class="label label-primary" data-ng-repeat="genre in collection.Genres" data-id="{{ genre.Id }}">{{ genre.Name }}</span>
+                </div>
+                <p>{{ collection.Overview }}</p>
+            </div>
+        </div>
+
+        <div data-ng-show="collection.HasParts" data-ng-repeat="item in collection.Parts">
+            <div data-ng-include="partsTemplate"></div>
+        </div>
+    </div>
+</div>

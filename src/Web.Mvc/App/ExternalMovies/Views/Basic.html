@@ -1,0 +1,18 @@
+﻿<div class="movie-search-result row">
+    <div class="col-md-2 col-sm-12 text-center">
+        <img class="img-responsive center-block" data-ng-src="{{ item.PosterImageUrl }}" alt="{{ item.Title }}" />
+    </div>
+    <div class="col-md-8 col-sm-12">
+        <h2>{{ item.Title }} ({{ item.ReleaseYear }})</h2>
+        <div class="genre-labels">
+            <span data-ng-repeat="genre in item.Genres" class="label label-primary" data-id="{{ genre.Id }}">{{ genre.Name }}</span>
+        </div>
+        <div class="overview">
+            {{ item.Overview }}
+        </div>
+    </div>
+    <div class="col-md-2 col-sm-12">
+        <a href="#" data-ng-click="showMovie(item.Id)" class="btn btn-primary col-md-12 col-xs-6">View Details</a>
+        <a href="#" data-ng-click="importMovie(item.Id)" class="btn btn-primary col-md-12 col-xs-6">Import Movie</a>
+    </div>
+</div>
